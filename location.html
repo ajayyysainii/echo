@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location Alarm</title>
+    <link rel="stylesheet" href="location.css">
+    
+    <link rel="shortcut icon" href="location.png" type="image/x-icon">
+
+</head>
+
+<body>
+    <h1><a  class="headingmain" href="./index.html">Echo - Smart Reminder</a></h1>
+    <!-- <p>Enter the location you want to set an alarm for:</p> -->
+    <div class="Card">
+        <div class="CardInner">
+            <!-- <label>Enter the location you want to set as a reminder :</label> -->
+            <div class="container">
+                <div class="Icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="#b4adad" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-search">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                </div>
+                <div class="InputContainer">
+                    <input type="text" id="locationInput" placeholder="Enter the location you want to set as a reminder " />
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <button class="button-50" onclick="setLocationAlarm()">Set Alarm</button>
+    <button class="button-50" onclick="stopAlarm()">Stop Alarm</button>
+    <div id="map"></div>
+
+    <audio id="audio" src="alarm2.mp3" preload="auto"></audio>
+
+    <script>
+        let targetLocation;
+        let alarmSet = false;
+        let id = null,
+            currentLocation = null;
+        const audio = document.getElementById("audio");
+
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 27.175035717882007, lng:  78.04222824496097 },
+                zoom: 18,
+                mapTypeId: 'hybrid'
+            });
+
+            const input = document.getElementById("locationInput");
+            const autocomplete = new google.maps.places.Autocomplete(input);
+
+            autocomplete.bindTo("bounds", map);
+
+            autocomplete.addListener("place_changed", () => {
+                const place = autocomplete.getPlace();
+                if (!place.geometry || !place.geometry.location) {
+                    return;
+                }
+                targetLocation = {
+                    lat: place.geometry.location.lat(),
+                    lng: place.geometry.location.lng(),
+                };
+                map.setCenter(targetLocation);
+                map.setzoom(20);
+            });
+
+            id = navigator.geolocation.watchPosition(
+                (position) => {
+                    currentLocation = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    };
+                },
+                () => {
+                    console.log("Failed to change location!");
+                }
+            );
+        }
+
+        function setLocationAlarm() {
+            if (!targetLocation) {
+                alert("Please select a valid location first.");
+                return;
+            }
+            alarmSet = false;
+            if (currentLocation != null) {
+                alarmSet = calculateDistance(currentLocation, targetLocation) <= 2;
+
+                if (alarmSet) audio.play();
+            }
+        }
+
+        function stopAlarm() {
+            audio.pause();
+            alarmSet = false;
+            audio.currentTime = 0;
+            navigator.geolocation.clearWatch(id);
+        }
+
+        function calculateDistance(location1, location2) {
+            const earthRadius = 6371; // Earth's radius in kilometers
+            const latDiff = toRadians(location2.lat - location1.lat);
+            const lngDiff = toRadians(location2.lng - location1.lng);
+            const a =
+                Math.sin(latDiff / 2) * Math.sin(latDiff / 2) +
+                Math.cos(toRadians(location1.lat)) *
+                Math.cos(toRadians(location2.lat)) *
+                Math.sin(lngDiff / 2) *
+                Math.sin(lngDiff / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            const distance = earthRadius * c;
+            return distance; // Distance in kilometers
+        }
+
+        function toRadians(degrees) {
+            return degrees * (Math.PI / 180);
+        }
+    </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCixqMa5K3RY1rADhsLHjDsfpDVVTosE4U&libraries=places&callback=initMap"
+        async defer></script>
+</body>
+
+</html>

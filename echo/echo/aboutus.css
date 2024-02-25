@@ -1,0 +1,41 @@
+* {
+    background-color: #1a1a1a;
+    color: white;
+    line-height: 40px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+
+    p,
+    ul {
+        background-color: #1a1a1a;
+    }
+
+}
+
+.container {
+    padding-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 200px;
+    background-color: #1b1b1b;
+    margin-top: 5%;
+    /* box-shadow: rgba(255, 254, 254, 0.56) 0px 22px 70px 4px; */
+    box-shadow: rgb(255, 255, 255) 0px 2px 4px, rgb(255, 248, 248) 0px 7px 13px -3px, rgb(255, 255, 255) 0px -3px 0px inset;
+    /* box-shadow: rgba(255, 255, 255, 0.35) 0px 10px 15px; */
+    /* box-shadow: rgb(245, 250, 255) 0px 20px 30px -10px; */
+    /* box-shadow: rgba(255, 255, 255, 0.4) 0px 5px, rgba(255, 255, 255, 0.3) 0px 10px, rgba(242, 242, 242, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px; */
+    display: flex;
+    justify-content: center;
+    /* horizontally center */
+    align-items: center;
+    /* vertically center */
+}
+
+.container {
+    display: grid;
+    place-items: center;
+    /* horizontally and vertically center */
+}

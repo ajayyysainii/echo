@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    background-color: #1a1a1a;
+    padding: 1%;
+    height: 600px;
+    width: 1000px;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    background-color: #1a1a1a;
+}
+
+.slider {
+    display: flex;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    transition: transform 1s ease;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+@media (height : 60px) {
+ 
+    }
+
+.apphead{
+    font-style: arial;
+    padding-left: 57%;
+    font-size: 50px;
+    color: white;
+    background-color: #1a1a1a;
+    height: 40px;
+    width: 100%;
+    text-decoration: none;
+}
+.innerecho{
+    color: white;
+    text-decoration: none;
+}

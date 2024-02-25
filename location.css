@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Hind&display=swap');
+
+
+h1,
+p {
+    color: white;
+    font-family: 'arial';
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #1a1a1a;
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+
+#locationInput {
+
+    width: 90%;
+    height: 21px;
+    border-radius: 10px;
+    border-style: solid;
+    padding-left: 7px;
+
+}
+
+/* bottom css is all about search box */
+
+.Card {
+    /* margin: 0; */
+    padding: 1px;
+    border-radius: var(--border-radius);
+    background: linear-gradient(-67deg, rgba(#224b72, .7), rgba(180, 74, 74, 0.8));
+    overflow: hidden;
+    box-shadow:
+        -2px -2px 6px rgba(#ffffff, .6),
+        2px 2px 12px #ffffff;
+    width: 100vw;
+}
+
+.CardInner {
+    padding: 16px 16px;
+    /* color: white; */
+    background-color: #1a1a1a;
+    border-radius: var(--border-radius);
+}
+
+.container {
+    display: flex;
+}
+
+.Icon {
+    cursor: pointer;
+    min-width: 46px;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+    margin-right: 12px;
+
+    box-shadow:
+        -2px -2px 6px rgba(#ffffff, .6),
+        2px 2px 12px #c8d8e7;
+
+    svg {
+        transform: translate(-1px, -1px);
+    }
+
+}
+
+label {
+    font-family: "Hind", sans-serif;
+    display: block;
+    color: #3c4b66;
+    margin-bottom: 12px;
+    background: linear-gradient(45deg, rgba(#7c2121, 1), #ffffff);
+    /* -webkit-background-clip: text; */
+    -webkit-text-fill-color: rgb(255, 255, 255);
+}
+
+.InputContainer {
+    width: 100%;
+}
+
+input {
+    background-color: #131516;
+    padding: 16px 32px;
+    border: none;
+    display: block;
+    font-size: 18px;
+    font-family: 'arial', sans-serif;
+    font-weight: 600;
+    color: #b4adad;
+    /* -webkit-appearance: none; */
+    transition: all 240ms ease-out;
+    width: 100%;
+
+    &::placeholder {
+        color: #b4adad;
+    }
+
+    &:focus {
+        outline: none;
+        color: #f8ffff;
+        background-color: lighten(#e3edf7, 3%);
+    }
+}
+
+;
+
+.InputContainer {
+    --top-shadow: inset 1px 1px 3px #000000, inset 2px 2px 6px #c5d4e3;
+    --bottom-shadow: inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+
+    position: relative;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+
+    &:before,
+    &:after {
+        left: 0;
+        top: 0;
+        display: block;
+        content: "";
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    &:before {
+        box-shadow: var(--bottom-shadow);
+    }
+
+    &:after {
+        box-shadow: var(--top-shadow);
+    }
+}
+
+/* here is the css of set alarm and stop alarm  */
+
+.headingmain{
+    color: white;
+    text-decoration: none;
+}
+.button-50 {
+    
+    appearance: button;
+    background-color: #1db118;
+    background-image: none;
+    border: 1px solid #000;
+    border-radius: 40px;
+    box-shadow: #d3c5c5 4px 4px 0 0, #000 4px 4px 0 1px;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: ITCAvantGardeStd-Bk, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    margin: -14px 5px 10px 48px;
+    overflow: visible;
+    padding: 12px 40px;
+    text-align: center;
+    text-transform: none;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+
+.button-50:focus {
+    text-decoration: none;
+}
+
+.button-50:hover {
+    text-decoration: none;
+}
+
+.button-50:active {
+    box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+    outline: 0;
+}
+
+.button-50:not([disabled]):active {
+    box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+    transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+    .button-50 {
+        padding: 12px 50px;
+    }
+}
+
+
+
+
